@@ -1,6 +1,6 @@
 # Norse Node
 
-**Live website:** `https://<OWNER>.github.io/<REPOSITORY>/` (replace this placeholder after deployment)
+**Live website:** https://financialelites.github.io/NorseNode-NKU/Main_Files/Login_Page.html (replace this placeholder after deployment)
 
 Norse Node is a Northern Kentucky University campus study-location directory and
 portfolio demonstration. Browse the current building directory, inspect
