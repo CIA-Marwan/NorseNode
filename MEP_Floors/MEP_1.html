@@ -1,0 +1,102 @@
+<!--
+ * Norse Node
+ * Copyright (c) 2026 Marwan Abdelrahman.
+ * All rights reserved.
+ *
+ * Original source code is proprietary.
+ * No permission is granted to copy, modify,
+ * redistribute, sublicense, or commercially
+ * exploit this software without prior written
+ * authorization from the copyright holder.
+ *
+ * Project: Norse Node
+ * Author: Marwan Abdelrahman
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEP Center Floor 1 | Norse Node</title>
+    <link rel="icon" type="image/png" href="https://thumb.wikimedia.org/wikipedia/en/thumb/0/02/Northern_Kentucky_University_seal.svg/1280px-Northern_Kentucky_University_seal.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail">
+    <link rel="stylesheet" href="../Main_Files/hackathon.css">
+</head>
+<body class="buildings-page" data-floor="1" data-building="mep-center">
+    <main class="buildings-main griffin-floor-main">
+        <a class="building-back-link" href="../Buildings_List/MEP_build.html">‹ Back to Mathematics, Education &amp; Psychology Center</a>
+        <header class="building-detail-header">
+            <p class="buildings-eyebrow">Norse Node study spots</p>
+            <h1>Mathematics, Education &amp; Psychology Center — Floor 1</h1>
+            <p>Select a room to view or create room-specific study servers.</p>
+        </header>
+        <section class="griffin-floor-card">
+            <h2>Choose a room</h2>
+            <p class="griffin-data-note">Enter the room name or number as it appears on campus. Servers are separated by room and floor. The Early Childhood Center is on this floor; other room locations are not specified.</p>
+            <div class="server-search-row">
+                <label for="room-name">Room name or number</label>
+                <input id="room-name" type="text" maxlength="80" placeholder="For example: Room 101 or Study Lounge" autocomplete="off">
+                <button class="create-server-button" id="load-room-servers" type="button">View Room Servers</button>
+            </div>
+            <div class="griffin-capacity-grid">
+                <p>Floor server participant limit: <strong id="floor-capacity">Loading…</strong></p>
+                <p>Active floor server participants: <strong id="floor-occupancy">—</strong></p>
+            </div>
+            <p class="griffin-data-note">Each room server supports up to 25 participants. This is not a verified physical floor capacity.</p>
+        </section>
+        <section class="study-servers-section" aria-labelledby="study-servers-title">
+            <div class="study-servers-heading">
+                <div>
+                    <p class="buildings-eyebrow">MEP Center · Floor 1</p>
+                    <h2 id="study-servers-title">Room study servers</h2>
+                    <p>Create or join a study session with other students in the selected room.</p>
+                </div>
+                <button class="create-server-button" id="open-create-server" type="button" disabled>＋ Create Server</button>
+            </div>
+            <div class="server-search-row">
+                <label class="sr-only" for="server-search">Search room study servers</label>
+                <input id="server-search" type="search" placeholder="Search servers by title or description..." autocomplete="off">
+            </div>
+            <p class="server-status" id="server-status" role="status" aria-live="polite">Enter a room name or number to view its separate servers.</p>
+            <div class="study-server-list" id="study-server-list" aria-live="polite"></div>
+        </section>
+    </main>
+    <dialog class="server-dialog" id="create-server-dialog" aria-labelledby="create-server-title">
+        <form class="server-dialog-content" id="create-server-form">
+            <button class="server-dialog-x" type="button" data-close-dialog aria-label="Close create server">×</button>
+            <p class="buildings-eyebrow">MEP Center · Floor 1</p>
+            <h2 id="create-server-title">Create Room Server</h2>
+            <p class="server-dialog-intro" id="server-schedule-note">Choose today's start and end times. Sessions may last up to 10 hours.</p>
+            <label for="server-title">Server title</label>
+            <input id="server-title" name="title" type="text" maxlength="60" required>
+            <label for="server-description">Description</label>
+            <textarea id="server-description" name="description" rows="4" maxlength="300" required></textarea>
+            <label for="server-max-members">Maximum users (including you)</label>
+            <input id="server-max-members" name="maxMembers" type="number" min="1" max="25" step="1" value="25" required>
+            <p class="server-dialog-intro">Each room server supports up to 25 participants.</p>
+            <div class="server-time-fields">
+                <div><label for="server-start">Start time</label><input id="server-start" name="startTime" type="time" step="60" required></div>
+                <div><label for="server-end">End time</label><input id="server-end" name="endTime" type="time" step="60" required></div>
+            </div>
+            <p class="server-form-error" id="server-form-error" role="alert"></p>
+            <button class="create-server-button server-form-submit" type="submit">Create Server</button>
+        </form>
+    </dialog>
+    <dialog class="server-dialog" id="study-chat-dialog" aria-labelledby="study-chat-title">
+        <section class="server-dialog-content study-chat-content">
+            <button class="server-dialog-x" type="button" data-close-dialog aria-label="Close chat">×</button>
+            <p class="buildings-eyebrow">Room study server chat</p>
+            <h2 id="study-chat-title"></h2>
+            <div class="study-chat-messages" id="study-chat-messages" aria-live="polite"></div>
+            <form class="study-chat-form" id="study-chat-form">
+                <label class="sr-only" for="study-chat-input">Write a message</label>
+                <input id="study-chat-input" type="text" maxlength="500" placeholder="Write a message…" required>
+                <button class="create-server-button" type="submit">Send</button>
+            </form>
+            <p class="server-form-error" id="study-chat-error" role="status"></p>
+        </section>
+    </dialog>
+    <script src="../MEP_Servers/MEP_Server1.js" defer></script>
+    <script src="../Main_Files/Floor_Page.js" defer></script>
+</body>
+</html>
