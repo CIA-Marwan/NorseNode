@@ -278,8 +278,8 @@ body.login-page {
 
 .login-card > .login-submit {
     display: block;
-    margin-right: auto;
-    margin-left: auto;
+    width: fit-content;
+    margin: 8px auto 0;
 }
 
 .login-submit:hover {
