@@ -1,6 +1,6 @@
 # Norse Node
 
-**Live website:** <https://financialelites.github.io/NorseNode-NKU/>
+**Live website:** <https://CIA-Marwan.github.io/NorseNode-NKU/>
 
 Norse Node is a Northern Kentucky University campus study-location directory and
 portfolio demonstration. Browse the current building directory, inspect
@@ -106,7 +106,7 @@ subpath.
 3. In the repository's **Settings → Pages**, select **GitHub Actions** as the
    build and deployment source.
 4. Wait for the **Deploy to GitHub Pages** workflow to complete. The public URL
-   remains `https://financialelites.github.io/NorseNode-NKU/`.
+   remains `https://CIA-Marwan.github.io/NorseNode-NKU/`.
 
 For a new local Git repository, replace the placeholders below with your
 repository details. These commands create a commit and publish it; review the
