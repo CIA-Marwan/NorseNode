@@ -1,6 +1,6 @@
 # Norse Node
 
-**Live website:** `https://<OWNER>.github.io/<REPOSITORY>/` (replace this placeholder after deployment)
+**Live website:** https://cia-marwan.github.io/NorseNode/
 
 Norse Node is a Northern Kentucky University campus study-location directory and
 portfolio demonstration. Browse the current building directory, inspect
