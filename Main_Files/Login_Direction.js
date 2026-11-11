@@ -13,46 +13,30 @@
  * Author: Marwan Abdelrahman
  */
 
-const userData = sessionStorage.getItem("norseNodeUser");
-
 const DEMO_PROFILE = Object.freeze({
     firstName: "John",
     lastName: "Doe",
     graduationYear: 2028,
     major: "Computer Science",
 });
-let signedInUser;
+sessionStorage.setItem("norseNodeUser", JSON.stringify(DEMO_PROFILE));
 
-try {
-    signedInUser = JSON.parse(userData || "null");
-} catch (error) {
-    console.error("Unable to read the Norse Node demo profile:", error);
-}
+const welcomeName = document.querySelector("#welcome-name");
+const welcomeGraduation = document.querySelector("#welcome-graduation");
+const welcomeMajor = document.querySelector("#welcome-major");
+const redirectCountdown = document.querySelector("#redirect-countdown");
 
-if (
-    !signedInUser
-    || signedInUser.firstName !== DEMO_PROFILE.firstName
-    || signedInUser.lastName !== DEMO_PROFILE.lastName
-) {
-    window.location.replace("Login_Page.html");
-} else {
-    const welcomeName = document.querySelector("#welcome-name");
-    const welcomeGraduation = document.querySelector("#welcome-graduation");
-    const welcomeMajor = document.querySelector("#welcome-major");
-    const redirectCountdown = document.querySelector("#redirect-countdown");
+welcomeName.textContent = `${DEMO_PROFILE.firstName} ${DEMO_PROFILE.lastName}!`;
+welcomeGraduation.textContent = DEMO_PROFILE.graduationYear;
+welcomeMajor.textContent = DEMO_PROFILE.major;
 
-    welcomeName.textContent = `${DEMO_PROFILE.firstName} ${DEMO_PROFILE.lastName}!`;
-    welcomeGraduation.textContent = DEMO_PROFILE.graduationYear;
-    welcomeMajor.textContent = DEMO_PROFILE.major;
+let secondsRemaining = 3;
+const countdownTimer = window.setInterval(() => {
+    secondsRemaining -= 1;
+    redirectCountdown.textContent = secondsRemaining;
 
-    let secondsRemaining = 3;
-    const countdownTimer = window.setInterval(() => {
-        secondsRemaining -= 1;
-        redirectCountdown.textContent = secondsRemaining;
-
-        if (secondsRemaining === 0) {
-            window.clearInterval(countdownTimer);
-            window.location.replace("Pickbuild_Page.html");
-        }
-    }, 1000);
-}
+    if (secondsRemaining === 0) {
+        window.clearInterval(countdownTimer);
+        window.location.replace("Pickbuild_Page.html");
+    }
+}, 1000);

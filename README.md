@@ -2,41 +2,34 @@
 
 **Live website:** `https://<OWNER>.github.io/<REPOSITORY>/` (replace this placeholder after deployment)
 
-Norse Node is a Northern Kentucky University campus study-location directory and
-portfolio demonstration. Browse the current building directory, inspect
-building and floor information, and try temporary study servers.
+Norse Node is an independent student hackathon project and campus study-space
+demonstration. Browse building and floor information, and try temporary study
+servers. It is not an official NKU service.
 
-Norse Node is an independent student project and is not an official NKU service.
-Use only the fictional demo credentials shown on the sign-in page. Never enter
-real NKU passwords or university credentials.
+The public demo does not ask for an account, personal information, or university
+credentials.
 
 ## Features
 
 - NKU building search and category filters.
 - Building information, photographs, floor details, and study locations.
-- A fixed, public demo sign-in and the existing animated welcome screen.
+- One-click demo entry with a fictional John Doe profile.
 - Study-server creation, chat simulation, and deletion on supported server pages.
 - Up to three active demo servers at a time, saved only in the current browser
   tab's `sessionStorage`.
 - Server titles and descriptions retain their existing word limits and language
   checks; user-provided text is rendered as text rather than HTML.
 
-This is a portfolio demonstration, not an authentication system. The demo
-credentials are public demo values, not passwords, and must not protect
-sensitive information. The static
+This is a portfolio demonstration, not an authentication system. The static
 GitHub Pages demo does not connect to a shared database: one visitor cannot see
 or change another visitor's demo servers. Demo servers and chat messages are
-cleared when the visitor signs out or closes the browser tab.
+cleared when the visitor resets the demo or closes the browser tab.
 
-## Demo access
+## Demo profile
 
-- **First Name:** John
-- **Last Name:** Doe
-- **Alias:** 1234
-
-Names are matched without regard to case and surrounding whitespace is ignored.
-The sign-in page's **Use Demo Account** button fills the form but does not submit
-it.
+Selecting **Explore Norse Node** initializes the fictional John Doe demo profile
+in the current browser session and opens the building directory. No sign-in or
+Alias is required.
 
 ## Technologies
 
@@ -59,10 +52,9 @@ cd _site
 python3 -m http.server 8001
 ```
 
-Open `http://localhost:8001/?demo=1` to use the browser-only demo. On local
-addresses, `?demo=1` explicitly selects the isolated demo; without it, the
-frontend can connect to the optional local API described below. Demo data is
-private to the current tab and is not written to the SQLite database.
+Open `http://localhost:8001/?demo=1` and select **Explore Norse Node** to use
+the browser-only demo. Demo data is private to the current tab and is not
+written to the SQLite database.
 
 ### Run the optional local API
 

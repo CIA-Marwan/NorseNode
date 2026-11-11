@@ -14,14 +14,15 @@
 
 ## Findings and remediation
 
-1. The login form can fall back to a browser GET submission if its JavaScript
-   handler is unavailable, exposing the demo names and alias in the URL.
-2. Keep the existing login layout and demo behavior, but remove native form
-   submission as a fallback, use a visible text field for the public demo alias,
-   and clearly warn visitors not to enter real NKU credentials.
-3. Keep the Pages workflow, directory structure, local backend, demo
-   functionality, and MIT license unchanged unless further evidence identifies
-   a concrete security defect.
+1. The former public login form requested a first name, last name, and Alias.
+   The root page now presents a one-click welcome screen instead and does not
+   request credentials or personal information.
+2. The Explore button initializes the fictional John Doe profile in the current
+   browser session. Study-server pages also initialize that demo profile when
+   opened directly, so their simulations do not depend on authentication.
+3. The old `Main_Files/Login_Page.html` URL redirects to the root welcome page
+   for compatibility. The existing project structure, Pages workflow, local
+   backend, MIT license, and browser-only study-server behavior are preserved.
 
 ## Validation plan
 
@@ -29,8 +30,9 @@
   database, configuration, or credential leakage.
 - Check every local HTML link, stylesheet, script, image reference, and
   generated route for missing targets under a repository subpath.
-- Exercise valid and invalid demo sign-in, including a no-JavaScript check that
-  credentials are not submitted or placed in the URL.
+- Confirm no public page contains a login form, Alias field, or password field.
+- Exercise the Explore button, direct building/floor navigation, and study
+  server creation, joining, chat, and reset flows.
 - Run the available building, floor, and study-server browser flows and review
   console/network failures where browser tooling permits.
 - Confirm the original folder layout, `LICENSE`, and deployment workflow remain

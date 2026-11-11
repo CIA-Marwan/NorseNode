@@ -16,22 +16,18 @@
 const DEMO_ACCOUNT = Object.freeze({
     firstName: "John",
     lastName: "Doe",
-    alias: "1234",
     graduationYear: 2028,
     major: "Computer Science",
 });
+const BROWSER_DEMO_MODE_KEY = "norseNodeBrowserDemo";
 
-const loginFields = document.querySelector("#login-fields");
-const demoFillButton = document.querySelector("#use-demo-account");
-const loginButton = document.querySelector("#login-submit");
-const loginError = document.querySelector("#login-error");
-const loginErrorClose = document.querySelector("#login-error-close");
+const exploreButton = document.querySelector("#explore-norse-node");
 const clock = document.querySelector("#login-clock");
 const clockDigits = [...clock.querySelectorAll("[data-clock-digit]")];
 const clockPeriod = document.querySelector("#clock-period");
-const firstNameInput = loginFields.querySelector("#first-name");
-const lastNameInput = loginFields.querySelector("#last-name");
-const aliasInput = loginFields.querySelector("#alias");
+if (new URLSearchParams(window.location.search).get("demo") === "1") {
+    sessionStorage.setItem(BROWSER_DEMO_MODE_KEY, "1");
+}
 sessionStorage.removeItem("norseNodeUser");
 sessionStorage.removeItem("norseNodeDemoServers");
 sessionStorage.removeItem("norseNodeUserId");
@@ -71,38 +67,12 @@ function updateClock() {
 updateClock();
 window.setInterval(updateClock, 1000);
 
-demoFillButton.addEventListener("click", () => {
-    firstNameInput.value = DEMO_ACCOUNT.firstName;
-    lastNameInput.value = DEMO_ACCOUNT.lastName;
-    aliasInput.value = DEMO_ACCOUNT.alias;
-});
-
-loginButton.addEventListener("click", () => {
-    const firstName = firstNameInput.value.trim().toLocaleLowerCase();
-    const lastName = lastNameInput.value.trim().toLocaleLowerCase();
-    const alias = aliasInput.value.trim();
-    const isDemoAccount = firstName === DEMO_ACCOUNT.firstName.toLocaleLowerCase()
-        && lastName === DEMO_ACCOUNT.lastName.toLocaleLowerCase()
-        && alias === DEMO_ACCOUNT.alias;
-
-    if (!isDemoAccount) {
-        loginError.showModal();
-        return;
-    }
-
+exploreButton.addEventListener("click", () => {
     sessionStorage.setItem("norseNodeUser", JSON.stringify({
         firstName: DEMO_ACCOUNT.firstName,
         lastName: DEMO_ACCOUNT.lastName,
         graduationYear: DEMO_ACCOUNT.graduationYear,
         major: DEMO_ACCOUNT.major,
     }));
-    window.location.assign("Login_Direction.html");
-});
-
-loginErrorClose.addEventListener("click", () => loginError.close());
-
-loginError.addEventListener("click", (event) => {
-    if (event.target === loginError) {
-        loginError.close();
-    }
+    window.location.assign("Main_Files/Pickbuild_Page.html");
 });

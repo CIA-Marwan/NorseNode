@@ -18,13 +18,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="xO2LqZhJyQpFbVGtTxSKjuGo2BYZLcq5cOxDXfVKks8">
-    <meta http-equiv="refresh" content="0; url=./Main_Files/Login_Page.html">
-    <title>Norse Node</title>
+    <meta name="theme-color" content="#080808">
+    <title>Welcome | Norse Node</title>
+    <link rel="stylesheet" href="Main_Files/hackathon.css">
+    <script src="Main_Files/Login.js" defer></script>
 </head>
-<body>
-    <p><a href="./Main_Files/Login_Page.html">Continue to Norse Node</a></p>
-    <script>
-        window.location.replace("./Main_Files/Login_Page.html");
-    </script>
+<body class="login-page">
+    <main class="login-layout">
+        <section class="login-clock" aria-label="Current local time">
+            <p class="login-clock-label">Local time</p>
+            <p class="login-clock-location">Highland Heights, KY</p>
+            <time class="flip-clock" id="login-clock" role="timer" aria-live="off">
+                <span class="clock-digit" data-clock-digit="0">0</span>
+                <span class="clock-digit" data-clock-digit="1">0</span>
+                <span class="clock-separator" aria-hidden="true">:</span>
+                <span class="clock-digit" data-clock-digit="2">0</span>
+                <span class="clock-digit" data-clock-digit="3">0</span>
+                <span class="clock-separator" aria-hidden="true">:</span>
+                <span class="clock-digit" data-clock-digit="4">0</span>
+                <span class="clock-digit" data-clock-digit="5">0</span>
+                <span class="clock-period" id="clock-period">--</span>
+            </time>
+        </section>
+
+        <section class="login-card">
+            <header class="login-header">
+                <p class="login-eyebrow">Independent student hackathon project</p>
+                <h1 class="login-logo">Norse Node</h1>
+                <p class="login-subtitle">A student-created campus study-space demo — not an official NKU service.</p>
+                <p class="login-subtitle">Explore building and floor information, then try browser-only study-server simulations.</p>
+                <p class="login-subtitle">No account or university credentials required. Demo activity stays in this browser session.</p>
+            </header>
+            <button class="login-submit" id="explore-norse-node" type="button">Explore Norse Node</button>
+        </section>
+    </main>
+    <footer class="site-copyright">© 2026 Marwan Abdelrahman</footer>
 </body>
 </html>

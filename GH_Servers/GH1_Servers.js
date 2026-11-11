@@ -27,6 +27,7 @@ let activeRoomKey = "";
 const localHosts = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
 const IS_BROWSER_DEMO = window.location.protocol === "file:"
     || !localHosts.has(window.location.hostname)
+    || sessionStorage.getItem("norseNodeBrowserDemo") === "1"
     || new URLSearchParams(window.location.search).get("demo") === "1";
 const localApiHost = window.location.hostname === "localhost" ? "127.0.0.1" : window.location.hostname;
 const STUDY_API_BASE_URL = window.location.protocol === "file:"
@@ -36,8 +37,12 @@ let userProfile = null;
 try {
     userProfile = JSON.parse(sessionStorage.getItem("norseNodeUser") || "null");
 } catch (error) {
-    console.error("Unable to read the Norse Node sign-in profile:", error);
+    console.error("Unable to read the Norse Node demo profile:", error);
     sessionStorage.removeItem("norseNodeUser");
+}
+if (!userProfile || typeof userProfile.firstName !== "string" || typeof userProfile.lastName !== "string") {
+    userProfile = { firstName: "John", lastName: "Doe" };
+    sessionStorage.setItem("norseNodeUser", JSON.stringify(userProfile));
 }
 
 function getUserId() {
@@ -195,10 +200,10 @@ function addDemoSessionControls() {
     const resetButton = document.createElement("button");
     resetButton.type = "button";
     resetButton.className = "create-server-button demo-reset-button";
-    resetButton.textContent = "Sign Out & Reset Demo";
+    resetButton.textContent = "Reset Demo";
     resetButton.addEventListener("click", () => {
         if (!clearDemoSession()) return;
-        window.location.assign(new URL("../Main_Files/Login_Page.html", window.location.href));
+        window.location.assign(new URL("../index.html", window.location.href));
     });
     controls.append(resetButton);
 }
@@ -403,7 +408,7 @@ function renderSessions() {
     createButton.disabled = !currentUserName || (IS_BROWSER_DEMO && demoServerCount >= MAX_DEMO_SERVERS);
 
     if (!currentUserName) {
-        showServerStatus("Sign in on this same address to create a server, join sessions, or chat. For collaborators, sign in through the host's network address.", true);
+        showServerStatus("The demo profile is not available. Return to the Norse Node welcome screen and select Explore Norse Node.", true);
     } else if (IS_BROWSER_DEMO && demoServerCount >= MAX_DEMO_SERVERS) {
         showServerStatus("Demo limit reached: delete a server before creating another. Servers are private to this browser session.");
     } else if (matchingSessions.length === 0) {
