@@ -21,13 +21,17 @@ const DEMO_ACCOUNT = Object.freeze({
     major: "Computer Science",
 });
 
-const loginForm = document.querySelector("#login-form");
+const loginFields = document.querySelector("#login-fields");
 const demoFillButton = document.querySelector("#use-demo-account");
+const loginButton = document.querySelector("#login-submit");
 const loginError = document.querySelector("#login-error");
 const loginErrorClose = document.querySelector("#login-error-close");
 const clock = document.querySelector("#login-clock");
 const clockDigits = [...clock.querySelectorAll("[data-clock-digit]")];
 const clockPeriod = document.querySelector("#clock-period");
+const firstNameInput = loginFields.querySelector("#first-name");
+const lastNameInput = loginFields.querySelector("#last-name");
+const aliasInput = loginFields.querySelector("#alias");
 sessionStorage.removeItem("norseNodeUser");
 sessionStorage.removeItem("norseNodeDemoServers");
 sessionStorage.removeItem("norseNodeUserId");
@@ -68,18 +72,15 @@ updateClock();
 window.setInterval(updateClock, 1000);
 
 demoFillButton.addEventListener("click", () => {
-    loginForm.elements.firstName.value = DEMO_ACCOUNT.firstName;
-    loginForm.elements.lastName.value = DEMO_ACCOUNT.lastName;
-    loginForm.elements.alias.value = DEMO_ACCOUNT.alias;
+    firstNameInput.value = DEMO_ACCOUNT.firstName;
+    lastNameInput.value = DEMO_ACCOUNT.lastName;
+    aliasInput.value = DEMO_ACCOUNT.alias;
 });
 
-loginForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(loginForm);
-    const firstName = String(formData.get("firstName")).trim().toLocaleLowerCase();
-    const lastName = String(formData.get("lastName")).trim().toLocaleLowerCase();
-    const alias = String(formData.get("alias")).trim();
+loginButton.addEventListener("click", () => {
+    const firstName = firstNameInput.value.trim().toLocaleLowerCase();
+    const lastName = lastNameInput.value.trim().toLocaleLowerCase();
+    const alias = aliasInput.value.trim();
     const isDemoAccount = firstName === DEMO_ACCOUNT.firstName.toLocaleLowerCase()
         && lastName === DEMO_ACCOUNT.lastName.toLocaleLowerCase()
         && alias === DEMO_ACCOUNT.alias;

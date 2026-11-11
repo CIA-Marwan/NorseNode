@@ -6,6 +6,10 @@ Norse Node is a Northern Kentucky University campus study-location directory and
 portfolio demonstration. Browse the current building directory, inspect
 building and floor information, and try temporary study servers.
 
+Norse Node is an independent student project and is not an official NKU service.
+Use only the fictional demo credentials shown on the sign-in page. Never enter
+real NKU passwords or university credentials.
+
 ## Features
 
 - NKU building search and category filters.
@@ -18,7 +22,8 @@ building and floor information, and try temporary study servers.
   checks; user-provided text is rendered as text rather than HTML.
 
 This is a portfolio demonstration, not an authentication system. The demo
-credentials are public and must not protect sensitive information. The static
+credentials are public demo values, not passwords, and must not protect
+sensitive information. The static
 GitHub Pages demo does not connect to a shared database: one visitor cannot see
 or change another visitor's demo servers. Demo servers and chat messages are
 cleared when the visitor signs out or closes the browser tab.
