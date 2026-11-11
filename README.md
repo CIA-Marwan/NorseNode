@@ -1,5 +1,4 @@
-# Norse Node
-
+Norse Node | Connecting Students, One Node at a Time
 **Live website:** https://CIA-Marwan.github.io/NorseNode-NKU/
 
 Norse Node is a Northern Kentucky University campus study-location directory and
