@@ -25,15 +25,10 @@ cleared when the visitor signs out or closes the browser tab.
 
 ## Demo access
 
-- **First Name:** John
-- **Last Name:** Doe
-- **Password:** `N0rseNode!Study#2026`
-
-Names are matched without regard to case and surrounding whitespace is ignored.
-The sign-in form pre-fills these public demo credentials. Its **Use Demo
-Account** button fills them again but does not submit the form. This password is
-for the public demo only; it is not a secret and does not provide production
-authentication.
+Select **Continue to Demo** to browse the public demo. It does not request or
+accept passwords or personal information. A fixed sample profile and demo
+activity are kept in the current browser session; this is not authentication
+and must not be used to protect sensitive information.
 
 ## Technologies
 
