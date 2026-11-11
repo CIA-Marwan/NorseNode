@@ -16,12 +16,16 @@
 const DEMO_PROFILE = Object.freeze({
     firstName: "John",
     lastName: "Doe",
+    alias: "N0rseNode!Study#2026",
     graduationYear: 2028,
     major: "Computer Science",
 });
 const browserDemoRequested = new URLSearchParams(window.location.search).get("demo") === "1";
 
+const demoAccessForm = document.querySelector("#demo-access-form");
 const enterDemoButton = document.querySelector("#enter-demo");
+const loginError = document.querySelector("#login-error");
+const loginErrorClose = document.querySelector("#login-error-close");
 const clock = document.querySelector("#login-clock");
 const clockDigits = [...clock.querySelectorAll("[data-clock-digit]")];
 const clockPeriod = document.querySelector("#clock-period");
@@ -33,6 +37,12 @@ if (browserDemoRequested) {
 } else {
     sessionStorage.removeItem("norseNodeBrowserDemo");
 }
+const firstNameInput = demoAccessForm.querySelector("#first-name");
+const lastNameInput = demoAccessForm.querySelector("#last-name");
+const aliasInput = demoAccessForm.querySelector("#alias");
+firstNameInput.value = DEMO_PROFILE.firstName;
+lastNameInput.value = DEMO_PROFILE.lastName;
+aliasInput.value = DEMO_PROFILE.alias;
 const clockFormatter = new Intl.DateTimeFormat(undefined, {
     hour: "2-digit",
     minute: "2-digit",
@@ -70,6 +80,18 @@ updateClock();
 window.setInterval(updateClock, 1000);
 
 enterDemoButton.addEventListener("click", () => {
+    const firstName = firstNameInput.value.trim().toLocaleLowerCase();
+    const lastName = lastNameInput.value.trim().toLocaleLowerCase();
+    const alias = aliasInput.value.trim();
+    const isDemoProfile = firstName === DEMO_PROFILE.firstName.toLocaleLowerCase()
+        && lastName === DEMO_PROFILE.lastName.toLocaleLowerCase()
+        && alias === DEMO_PROFILE.alias;
+
+    if (!isDemoProfile) {
+        loginError.showModal();
+        return;
+    }
+
     sessionStorage.setItem("norseNodeUser", JSON.stringify({
         firstName: DEMO_PROFILE.firstName,
         lastName: DEMO_PROFILE.lastName,
@@ -77,4 +99,12 @@ enterDemoButton.addEventListener("click", () => {
         major: DEMO_PROFILE.major,
     }));
     window.location.assign("login-direction.html");
+});
+
+loginErrorClose.addEventListener("click", () => loginError.close());
+
+loginError.addEventListener("click", (event) => {
+    if (event.target === loginError) {
+        loginError.close();
+    }
 });

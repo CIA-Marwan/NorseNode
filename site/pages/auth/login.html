@@ -45,18 +45,44 @@
 
         <section class="login-card">
             <header class="login-header">
-                <p class="login-eyebrow">Public browser demo</p>
+                <p class="login-eyebrow">Welcome to</p>
                 <h1 class="login-logo">Norse Node</h1>
-                <p class="login-subtitle">Browse NKU study spaces</p>
+                <p class="login-subtitle">Enter the public demo details to continue</p>
             </header>
 
             <section class="demo-access" aria-labelledby="demo-access-title">
-                <h2 id="demo-access-title">Try the public demo</h2>
-                <p>No account, password, or personal information is needed. Demo activity stays in this browser session.</p>
-                <button class="login-submit" id="enter-demo" type="button">Continue to Demo</button>
+                <h2 id="demo-access-title">Public Demo Access</h2>
+                <p>This public demo uses an Alias, not a password. Do not enter real account credentials.</p>
+                <div class="login-form" id="demo-access-form">
+                    <div class="login-field">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" name="firstName" autocomplete="off" required>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" name="lastName" autocomplete="off" required>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="alias">Alias</label>
+                        <input type="text" id="alias" name="alias" autocomplete="off" spellcheck="false" required>
+                    </div>
+
+                    <button class="login-submit" id="enter-demo" type="button">Continue to Demo</button>
+                </div>
             </section>
         </section>
     </main>
+
+    <dialog class="login-error" id="login-error" aria-labelledby="login-error-title" aria-describedby="login-error-message">
+        <div class="login-error-content">
+            <span class="login-error-icon" aria-hidden="true">×</span>
+            <h2 id="login-error-title">Demo access unsuccessful</h2>
+            <p id="login-error-message">Check your first name, last name, and Alias, then try again.</p>
+            <button class="login-error-close" type="button" id="login-error-close">Try again</button>
+        </div>
+    </dialog>
 
     <footer class="site-copyright">© 2026 Marwan Abdelrahman</footer>
 </body>

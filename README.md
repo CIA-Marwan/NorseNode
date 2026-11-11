@@ -25,8 +25,14 @@ cleared when the visitor signs out or closes the browser tab.
 
 ## Demo access
 
-Select **Continue to Demo** to browse the public demo. It does not request or
-accept passwords or personal information. A fixed sample profile and demo
+Use the public demo details below to continue:
+
+- **First Name:** John
+- **Last Name:** Doe
+- **Alias:** `N0rseNode!Study#2026`
+
+The Alias is public demo text, not a password or authentication secret. Do not
+reuse it or enter real account credentials. A fixed sample profile and demo
 activity are kept in the current browser session; this is not authentication
 and must not be used to protect sensitive information.
 
