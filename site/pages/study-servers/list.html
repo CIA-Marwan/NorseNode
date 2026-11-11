@@ -1,0 +1,251 @@
+<!--
+ * Norse Node
+ * Copyright (c) 2026 Marwan Abdelrahman.
+ * All rights reserved.
+ *
+ * Original source code is proprietary.
+ * No permission is granted to copy, modify,
+ * redistribute, sublicense, or commercially
+ * exploit this software without prior written
+ * authorization from the copyright holder.
+ *
+ * Project: Norse Node
+ * Author: Marwan Abdelrahman
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room List | Norse Node</title>
+    <link rel="icon" type="image/png" href="https://thumb.wikimedia.org/wikipedia/en/thumb/0/02/Northern_Kentucky_University_seal.svg/1280px-Northern_Kentucky_University_seal.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail">
+    <link rel="stylesheet" href="../../assets/css/norse-node.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body.server-list-page {
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 20px;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)),
+                url("https://www.acentech.com/wp-content/uploads/2015/10/nku-infomatics-exterior-acentech-scaled.jpg")
+                center / cover fixed,
+                #080808;
+            color: #f2bd45;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .server-shell {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+            padding: 28px;
+            border: 1px solid rgba(242, 189, 69, 0.45);
+            border-radius: 28px;
+            background: rgba(15, 17, 21, 0.82);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(12px);
+        }
+
+        .server-header {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .server-eyebrow {
+            margin: 0;
+            color: #d8af53;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .server-title {
+            margin: 10px 0 8px;
+            color: #f2bd45;
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            letter-spacing: 0.04em;
+        }
+
+        .server-subtitle {
+            margin: 0;
+            color: #d0b66f;
+            font-size: 1rem;
+        }
+
+        .floor-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .floor-filter {
+            border: 1px solid rgba(242, 189, 69, 0.4);
+            border-radius: 10px;
+            background: rgba(18, 21, 26, 0.9);
+            color: #f7d672;
+            font-size: 0.95rem;
+            padding: 10px 14px;
+            min-width: 180px;
+        }
+
+        .room-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .room-card {
+            display: grid;
+            gap: 18px;
+            padding: 22px;
+            border: 1px solid rgba(242, 189, 69, 0.28);
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(34, 31, 24, 0.96), rgba(14, 16, 18, 0.94));
+            box-shadow: inset 0 1px rgba(255, 255, 255, 0.05), 0 18px 34px rgba(0, 0, 0, 0.22);
+        }
+
+        .room-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .room-card-label {
+            margin: 0 0 6px;
+            color: #d8af53;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .room-card h3 {
+            margin: 0;
+            color: #f7d672;
+            font-size: 1.6rem;
+        }
+
+        .seat-pill {
+            padding: 8px 12px;
+            border: 1px solid rgba(242, 189, 69, 0.35);
+            border-radius: 999px;
+            background: rgba(242, 189, 69, 0.08);
+            color: #f7d672;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .room-meta {
+            display: grid;
+            gap: 8px;
+            color: #f1d79f;
+            font-size: 0.96rem;
+        }
+
+        .room-meta p {
+            margin: 0;
+        }
+
+        .room-description {
+            margin: 0;
+            color: #e8d9b0;
+            line-height: 1.5;
+        }
+
+        .room-attendees {
+            display: grid;
+            gap: 8px;
+        }
+
+        .room-attendees p {
+            margin: 0;
+            color: #d8af53;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .room-attendees ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #f1d79f;
+            line-height: 1.65;
+        }
+
+        .join-room-btn {
+            appearance: none;
+            border: 1px solid rgba(242, 189, 69, 0.55);
+            border-radius: 12px;
+            background: linear-gradient(180deg, #f2bd45, #c6922a);
+            color: #111;
+            cursor: pointer;
+            font-size: 0.96rem;
+            font-weight: 800;
+            padding: 12px 16px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .join-room-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 22px rgba(242, 189, 69, 0.18);
+        }
+
+        .join-room-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.55;
+        }
+
+        .empty-state {
+            margin: 0;
+            padding: 28px;
+            border: 1px dashed rgba(242, 189, 69, 0.35);
+            border-radius: 18px;
+            color: #f1d79f;
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .server-shell {
+                padding: 20px 16px;
+            }
+
+            .room-card-top {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body class="server-list-page">
+    <main class="server-shell">
+        <header class="server-header">
+            <p class="server-eyebrow">Study Spaces</p>
+            <h1 class="server-title">Norse Node</h1>
+            <p class="server-subtitle">Available room list</p>
+        </header>
+
+        <div class="floor-toolbar">
+            <label for="floor-filter" class="sr-only" style="position:absolute;left:-9999px;">Filter by floor</label>
+            <select id="floor-filter" class="floor-filter">
+                <option value="All Floors">All Floors</option>
+            </select>
+        </div>
+
+        <section id="room-list" class="room-list" aria-live="polite"></section>
+    </main>
+
+    <script src="../../assets/js/shared/Data.js" defer></script>
+    <script src="../../assets/js/shared/ServerList.js" defer></script>
+</body>
+
+</html>

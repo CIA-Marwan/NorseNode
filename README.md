@@ -1,6 +1,6 @@
 # Norse Node
 
-**Live website:** `https://<OWNER>.github.io/<REPOSITORY>/` (replace this placeholder after deployment)
+**Live website:** <https://financialelites.github.io/NorseNode-NKU/>
 
 Norse Node is a Northern Kentucky University campus study-location directory and
 portfolio demonstration. Browse the current building directory, inspect
@@ -27,11 +27,13 @@ cleared when the visitor signs out or closes the browser tab.
 
 - **First Name:** John
 - **Last Name:** Doe
-- **Alias:** 1234
+- **Password:** `N0rseNode!Study#2026`
 
 Names are matched without regard to case and surrounding whitespace is ignored.
-The sign-in page's **Use Demo Account** button fills the form but does not submit
-it.
+The sign-in form pre-fills these public demo credentials. Its **Use Demo
+Account** button fills them again but does not submit the form. This password is
+for the public demo only; it is not a secret and does not provide production
+authentication.
 
 ## Technologies
 
@@ -41,6 +43,18 @@ it.
 - GitHub Actions and GitHub Pages for static deployment.
 
 No frontend package manager or external runtime dependency is required.
+
+## Repository layout
+
+- `index.html` is the stable GitHub Pages entry point.
+- `site/pages/` contains the sign-in flow, building directory, building and floor
+  pages, and study-server pages.
+- `site/assets/` contains shared styles and scripts alongside building-specific
+  floor and study-server scripts.
+- `backend/study_server.py` is the optional local API; it is not included in the
+  public static site.
+- `scripts/build_pages.py` copies only the root entry point and frontend files
+  from `site/` into `_site/`.
 
 ## Local development
 
@@ -64,11 +78,13 @@ private to the current tab and is not written to the SQLite database.
 The local API is for development only. In a separate terminal, run:
 
 ```sh
-python3 Main_Files/Study_Server.py
+python3 backend/study_server.py
 ```
 
 It binds to `127.0.0.1:8000` by default and stores local data in
-`Main_Files/norse_node.sqlite3`, which is excluded from Git and Pages builds.
+`backend/norse_node.sqlite3`, which is excluded from Git and Pages builds. An
+existing `Main_Files/norse_node.sqlite3` is reused in place to preserve local
+data from the old layout; no database file is moved or published.
 When using the local API, serve the frontend from `http://localhost:8001/` as
 above. Do not expose this unauthenticated development API to a public network.
 
@@ -89,8 +105,8 @@ subpath.
    `.github/workflows/pages.yml` builds `_site` and deploys it to GitHub Pages.
 3. In the repository's **Settings → Pages**, select **GitHub Actions** as the
    build and deployment source.
-4. Wait for the **Deploy to GitHub Pages** workflow to complete, then replace
-   the live website placeholder at the top of this README.
+4. Wait for the **Deploy to GitHub Pages** workflow to complete. The public URL
+   remains `https://financialelites.github.io/NorseNode-NKU/`.
 
 For a new local Git repository, replace the placeholders below with your
 repository details. These commands create a commit and publish it; review the

@@ -19,11 +19,13 @@ import shutil
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = PROJECT_ROOT / "_site"
+SITE_ROOT = PROJECT_ROOT / "site"
 FRONTEND_EXTENSIONS = {".html", ".css", ".js"}
-EXCLUDED_DIRECTORIES = {".git", ".github", ".venv", "__pycache__", "_site"}
 
 
 def main():
+    if not SITE_ROOT.is_dir() or SITE_ROOT.is_symlink():
+        raise SystemExit(f"Expected a real frontend source directory at {SITE_ROOT}")
     if PAGES_ROOT.is_symlink():
         raise SystemExit(f"Refusing to build into a symbolic link: {PAGES_ROOT}")
 
@@ -32,15 +34,18 @@ def main():
     PAGES_ROOT.mkdir()
 
     copied_files = 0
-    for source in PROJECT_ROOT.rglob("*"):
-        relative_path = source.relative_to(PROJECT_ROOT)
-        if any(part in EXCLUDED_DIRECTORIES for part in relative_path.parts):
-            continue
+    sources = [PROJECT_ROOT / "index.html", *sorted(SITE_ROOT.rglob("*"))]
+    for source in sources:
         if source.is_symlink():
-            raise SystemExit(f"Refusing to publish a symbolic link: {relative_path}")
+            raise SystemExit(f"Refusing to publish a symbolic link: {source}")
         if not source.is_file() or source.suffix.lower() not in FRONTEND_EXTENSIONS:
             continue
 
+        relative_path = (
+            Path("index.html")
+            if source == PROJECT_ROOT / "index.html"
+            else source.relative_to(SITE_ROOT)
+        )
         destination = PAGES_ROOT / relative_path
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, destination)

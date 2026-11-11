@@ -1,0 +1,62 @@
+<!--
+ * Norse Node
+ * Copyright (c) 2026 Marwan Abdelrahman.
+ * All rights reserved.
+ *
+ * Original source code is proprietary.
+ * No permission is granted to copy, modify,
+ * redistribute, sublicense, or commercially
+ * exploit this software without prior written
+ * authorization from the copyright holder.
+ *
+ * Project: Norse Node
+ * Author: Marwan Abdelrahman
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a Building | Norse Node</title>
+    <link rel="icon" type="image/png" href="https://thumb.wikimedia.org/wikipedia/en/thumb/0/02/Northern_Kentucky_University_seal.svg/1280px-Northern_Kentucky_University_seal.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail">
+    <link rel="stylesheet" href="../../assets/css/norse-node.css">
+    <script src="../../assets/js/shared/Pickbuild.js" defer></script>
+</head>
+
+<body class="buildings-page">
+    <main class="buildings-main">
+        <a class="buildings-login-link" href="../auth/login.html">Sign out &amp; reset demo</a>
+        <header class="buildings-header">
+            <p class="buildings-eyebrow">Norse Node</p>
+            <h1>Pick a building of choice</h1>
+            <label class="building-search-label" for="building-search">Search NKU buildings</label>
+            <input
+                class="building-search"
+                type="search"
+                id="building-search"
+                placeholder="Search by building name..."
+                autocomplete="off">
+        </header>
+
+        <div class="building-list-toolbar">
+            <p class="building-count" id="building-count" aria-live="polite"></p>
+            <div class="building-category-filter">
+                <label for="building-category">Category</label>
+                <select id="building-category">
+                    <option value="all">All buildings</option>
+                    <option value="Recommended">Recommended</option>
+                    <option value="Most popular">Most popular</option>
+                    <option value="Most common">Most common</option>
+                    <option value="Not common">Not common</option>
+                </select>
+            </div>
+        </div>
+        <section class="building-list" id="building-list" aria-label="NKU buildings">        </section>
+        <p class="building-empty" id="building-empty" hidden></p>
+        <footer class="site-copyright">© 2026 Marwan Abdelrahman</footer>
+    </main>
+</body>
+
+</html>
