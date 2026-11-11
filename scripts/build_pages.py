@@ -20,6 +20,7 @@ import shutil
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = PROJECT_ROOT / "_site"
 FRONTEND_EXTENSIONS = {".html", ".css", ".js"}
+PUBLISHED_ROOT_FILES = {"CNAME", "favicon.png", "robots.txt", "sitemap.xml"}
 EXCLUDED_DIRECTORIES = {".git", ".github", ".venv", "__pycache__", "_site"}
 
 
@@ -38,7 +39,12 @@ def main():
             continue
         if source.is_symlink():
             raise SystemExit(f"Refusing to publish a symbolic link: {relative_path}")
-        if not source.is_file() or source.suffix.lower() not in FRONTEND_EXTENSIONS:
+        if not source.is_file():
+            continue
+        if (
+            source.suffix.lower() not in FRONTEND_EXTENSIONS
+            and relative_path.as_posix() not in PUBLISHED_ROOT_FILES
+        ):
             continue
 
         destination = PAGES_ROOT / relative_path
@@ -49,7 +55,7 @@ def main():
     if not (PAGES_ROOT / "index.html").is_file():
         raise SystemExit("The Pages build is missing its root index.html entry point.")
 
-    print(f"Built {copied_files} frontend files in {PAGES_ROOT}")
+    print(f"Built {copied_files} public site files in {PAGES_ROOT}")
 
 
 if __name__ == "__main__":

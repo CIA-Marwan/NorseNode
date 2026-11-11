@@ -2025,3 +2025,60 @@ body.building-detail-page {
     margin-inline: auto;
     object-fit: contain;
 }
+
+.buildings-page[data-floor] {
+    padding: 20px 16px 40px;
+}
+
+.griffin-floor-main .building-detail-header {
+    margin-bottom: 10px;
+}
+
+.griffin-floor-main .building-detail-header h1 {
+    margin-bottom: 0;
+    font-size: clamp(1.7rem, 4.5vw, 2.2rem);
+}
+
+.griffin-floor-main .griffin-floor-card {
+    padding: 22px;
+    border-radius: 18px;
+}
+
+.griffin-floor-main .griffin-floor-card > h2 {
+    margin: 16px 0 8px;
+    font-size: 1.2rem;
+}
+
+.griffin-floor-main .griffin-floor-feature {
+    min-height: 38px;
+}
+
+.griffin-floor-main .griffin-floor-card .griffin-data-note {
+    margin: 14px 0 0;
+    font-size: 0.75rem;
+}
+
+.griffin-floor-main .study-servers-section {
+    margin-top: 32px;
+    padding-top: 22px;
+}
+
+.griffin-floor-main .study-servers-heading {
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.griffin-floor-main .study-servers-heading h2 {
+    font-size: clamp(1.7rem, 4vw, 2rem);
+}
+
+@media (max-width: 560px) {
+    .griffin-floor-main .study-servers-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .griffin-floor-main .study-servers-heading .create-server-button {
+        align-self: flex-start;
+    }
+}

@@ -14,11 +14,10 @@
  */
 
 (function initializeFloorPage() {
-    const floorCard = document.querySelector(".griffin-floor-card");
-    const capacityDisplay = document.querySelector("#floor-capacity");
-    const occupancyDisplay = document.querySelector("#floor-occupancy");
     const body = document.body;
     const floorNumber = body.dataset.floor;
+    let capacityDisplay = document.querySelector("#floor-capacity");
+    let occupancyDisplay = document.querySelector("#floor-occupancy");
     const buildingNames = {
         "student-union": "Student Union",
         "health-innovation-center": "Health Innovation Center",
@@ -35,38 +34,23 @@
     const buildingName = buildingNames[body.dataset.building]
         || (body.classList.contains("griffin-page") ? "Griffin Hall" : "");
     const pageHeader = document.querySelector(".building-detail-header");
-    const roomInput = document.querySelector("#room-name");
 
     if (buildingName && pageHeader && floorNumber) {
         const title = pageHeader.querySelector("h1");
         const subtitle = pageHeader.querySelector("p:last-child");
         if (title) title.textContent = `${buildingName} — Floor ${floorNumber}`;
-        if (subtitle) subtitle.textContent = "Study-space information and room capacity for this floor.";
+        if (subtitle) {
+            subtitle.textContent = body.dataset.building === "mep-center"
+                ? "Study-space information and floor-wide study servers."
+                : "Study-space information and room capacity for this floor.";
+        }
     }
 
-    if (floorCard && roomInput) {
-        const roomPanel = document.createElement("section");
-        roomPanel.className = "griffin-floor-card room-selection-panel";
-        const roomHeading = floorCard.querySelector(":scope > h2");
-        const roomSearch = roomInput.closest(".server-search-row");
-        const roomDescription = [...floorCard.querySelectorAll(":scope > .griffin-data-note")]
-            .find((note) => !note.textContent.toLowerCase().includes("limit"));
-
-        if (roomHeading) roomPanel.append(roomHeading);
-        if (roomDescription) roomPanel.append(roomDescription);
-        if (roomSearch) roomPanel.append(roomSearch);
-
-        for (const note of floorCard.querySelectorAll(":scope > .griffin-data-note")) {
-            note.remove();
-        }
-        for (const grid of floorCard.querySelectorAll(":scope > .griffin-capacity-grid")) {
-            if (grid !== floorCard.querySelector(":scope > .griffin-capacity-grid")) grid.remove();
-        }
-
-        const serversSection = document.querySelector(".study-servers-section");
-        if (roomPanel.childElementCount && serversSection) {
-            serversSection.before(roomPanel);
-        }
+    let floorCard = document.querySelector(".griffin-floor-card");
+    if (!floorCard && pageHeader) {
+        floorCard = document.createElement("section");
+        floorCard.className = "griffin-floor-card";
+        pageHeader.after(floorCard);
     }
 
     function setLabel(display, label) {
@@ -76,20 +60,31 @@
         }
     }
 
-    setLabel(capacityDisplay, "Participant limit per server");
-    setLabel(occupancyDisplay, "Active study-server occupancy");
-    if (capacityDisplay) capacityDisplay.textContent = "25 people";
-    if (occupancyDisplay) occupancyDisplay.textContent = "0/25";
-
     if (floorCard) {
-        let featureList = floorCard.querySelector("#floor-feature-list");
+        let capacityGrid = floorCard.querySelector(":scope > .griffin-capacity-grid");
+        if (!capacityGrid) {
+            capacityGrid = document.createElement("div");
+            capacityGrid.className = "griffin-capacity-grid";
+            for (const id of ["floor-capacity", "floor-occupancy"]) {
+                const paragraph = document.createElement("p");
+                const display = document.createElement("strong");
+                display.id = id;
+                paragraph.append(display);
+                capacityGrid.append(paragraph);
+            }
+        }
+
+        let featureHeading = floorCard.querySelector(":scope > h2");
+        if (!featureHeading) {
+            featureHeading = document.createElement("h2");
+        }
+        featureHeading.textContent = "Floor features";
+
+        let featureList = floorCard.querySelector(":scope > #floor-feature-list");
         if (!featureList) {
-            const heading = document.createElement("h2");
-            heading.textContent = "Floor features";
             featureList = document.createElement("ul");
             featureList.className = "griffin-floor-feature-list";
             featureList.id = "floor-feature-list";
-            floorCard.append(heading, featureList);
         }
 
         if (featureList.childElementCount === 0) {
@@ -112,11 +107,44 @@
             }
         }
 
-        if (!floorCard.querySelector(".griffin-data-note")) {
+        const notes = [...floorCard.querySelectorAll(":scope > .griffin-data-note")];
+        if (notes.length === 0) {
             const note = document.createElement("p");
             note.className = "griffin-data-note";
-            note.textContent = "Each study server supports up to 25 participants. This is not a verified physical floor capacity.";
-            floorCard.append(note);
+            note.textContent = "Each study server supports up to 25 participants. This is not a verified physical floor capacity; feature availability has not been provided.";
+            notes.push(note);
         }
+
+        const preservedContent = [...floorCard.children].filter((child) =>
+            child !== capacityGrid
+            && child !== featureHeading
+            && child !== featureList
+            && !notes.includes(child),
+        );
+        floorCard.replaceChildren(capacityGrid, featureHeading, featureList, ...preservedContent, ...notes);
+        capacityDisplay = floorCard.querySelector("#floor-capacity");
+        occupancyDisplay = floorCard.querySelector("#floor-occupancy");
+    }
+
+    setLabel(capacityDisplay, "Participant limit per server");
+    setLabel(occupancyDisplay, "Active study-server occupancy");
+    if (capacityDisplay) capacityDisplay.textContent = "25 people";
+    if (occupancyDisplay) occupancyDisplay.textContent = "0/25";
+
+    const serversSection = document.querySelector(".study-servers-section");
+    if (serversSection) {
+        const eyebrow = serversSection.querySelector(".study-servers-heading .buildings-eyebrow");
+        const heading = serversSection.querySelector("#study-servers-title");
+        const description = serversSection.querySelector(".study-servers-heading p:last-child");
+        const createButton = serversSection.querySelector("#open-create-server");
+        const searchLabel = serversSection.querySelector('label[for="server-search"]');
+        const searchInput = serversSection.querySelector("#server-search");
+
+        if (eyebrow && buildingName) eyebrow.textContent = `${buildingName} · Floor ${floorNumber}`;
+        if (heading) heading.textContent = "Study servers";
+        if (description) description.textContent = "Start a study session, join other students, and chat while you work.";
+        if (createButton) createButton.textContent = "＋ Create Server";
+        if (searchLabel) searchLabel.textContent = "Search study servers";
+        if (searchInput) searchInput.placeholder = "Search servers by title or description...";
     }
 })();

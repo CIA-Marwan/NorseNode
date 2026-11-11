@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEP Center Floor 3 | Norse Node</title>
-    <link rel="icon" type="image/png" href="https://thumb.wikimedia.org/wikipedia/en/thumb/0/02/Northern_Kentucky_University_seal.svg/1280px-Northern_Kentucky_University_seal.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="../Main_Files/hackathon.css">
 </head>
 <body class="buildings-page" data-floor="3" data-building="mep-center">
@@ -28,28 +28,14 @@
         <header class="building-detail-header">
             <p class="buildings-eyebrow">Norse Node study spots</p>
             <h1>Mathematics, Education &amp; Psychology Center — Floor 3</h1>
-            <p>Select a room to view or create room-specific study servers.</p>
+            <p>Explore study spaces and floor-wide study servers.</p>
         </header>
-        <section class="griffin-floor-card">
-            <h2>Choose a room</h2>
-            <p class="griffin-data-note">Enter the room name or number as it appears on campus. Servers are separated by room and floor. Exact room locations are not specified in the building description.</p>
-            <div class="server-search-row">
-                <label for="room-name">Room name or number</label>
-                <input id="room-name" type="text" maxlength="80" placeholder="For example: Room 301 or Study Lounge" autocomplete="off">
-                <button class="create-server-button" id="load-room-servers" type="button">View Room Servers</button>
-            </div>
-            <div class="griffin-capacity-grid">
-                <p>Floor server participant limit: <strong id="floor-capacity">Loading…</strong></p>
-                <p>Active floor server participants: <strong id="floor-occupancy">—</strong></p>
-            </div>
-            <p class="griffin-data-note">Each room server supports up to 25 participants. This is not a verified physical floor capacity.</p>
-        </section>
         <section class="study-servers-section" aria-labelledby="study-servers-title">
             <div class="study-servers-heading">
                 <div>
                     <p class="buildings-eyebrow">MEP Center · Floor 3</p>
-                    <h2 id="study-servers-title">Room study servers</h2>
-                    <p>Create or join a study session with other students in the selected room.</p>
+                    <h2 id="study-servers-title">Floor study servers</h2>
+                    <p>Create or join a study session with other students on this floor.</p>
                 </div>
                 <button class="create-server-button" id="open-create-server" type="button" disabled>＋ Create Server</button>
             </div>
@@ -57,7 +43,7 @@
                 <label class="sr-only" for="server-search">Search room study servers</label>
                 <input id="server-search" type="search" placeholder="Search servers by title or description..." autocomplete="off">
             </div>
-            <p class="server-status" id="server-status" role="status" aria-live="polite">Enter a room name or number to view its separate servers.</p>
+            <p class="server-status" id="server-status" role="status" aria-live="polite">Loading floor study servers…</p>
             <div class="study-server-list" id="study-server-list" aria-live="polite"></div>
         </section>
     </main>
@@ -65,7 +51,7 @@
         <form class="server-dialog-content" id="create-server-form">
             <button class="server-dialog-x" type="button" data-close-dialog aria-label="Close create server">×</button>
             <p class="buildings-eyebrow">MEP Center · Floor 3</p>
-            <h2 id="create-server-title">Create Room Server</h2>
+            <h2 id="create-server-title">Create Study Server</h2>
             <p class="server-dialog-intro" id="server-schedule-note">Choose today's start and end times. Sessions may last up to 10 hours.</p>
             <label for="server-title">Server title</label>
             <input id="server-title" name="title" type="text" maxlength="60" required>
@@ -73,7 +59,7 @@
             <textarea id="server-description" name="description" rows="4" maxlength="300" required></textarea>
             <label for="server-max-members">Maximum users (including you)</label>
             <input id="server-max-members" name="maxMembers" type="number" min="1" max="25" step="1" value="25" required>
-            <p class="server-dialog-intro">Each room server supports up to 25 participants.</p>
+            <p class="server-dialog-intro">Each study server supports up to 25 participants.</p>
             <div class="server-time-fields">
                 <div><label for="server-start">Start time</label><input id="server-start" name="startTime" type="time" step="60" required></div>
                 <div><label for="server-end">End time</label><input id="server-end" name="endTime" type="time" step="60" required></div>

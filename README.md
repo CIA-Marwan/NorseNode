@@ -1,6 +1,6 @@
 # Norse Node
 
-**Live website:** https://cia-marwan.github.io/NorseNode/
+**Live website:** https://norsenode.dev/
 
 Norse Node is an independent student hackathon project and campus study-space
 demonstration. Browse building and floor information, and try temporary study
@@ -76,18 +76,20 @@ Pages.
 
 ## GitHub Pages deployment
 
-The Pages build contains only `.html`, `.css`, and `.js` files. It deliberately
-does not publish the Python API, SQLite database, virtual environment, or local
-configuration. Relative links are retained so the site works under a repository
-subpath.
+The Pages build contains `.html`, `.css`, and `.js` files, plus the root
+`CNAME`, `favicon.png`, `robots.txt`, and `sitemap.xml` files needed for the
+custom domain, site icon, and search indexing. It deliberately does not publish
+the Python API, SQLite database, virtual environment, or local configuration.
+Relative links are retained so the site works under a repository subpath.
 
 1. Create a GitHub repository and add this project to it.
 2. Push the `main` branch. The workflow at
    `.github/workflows/pages.yml` builds `_site` and deploys it to GitHub Pages.
 3. In the repository's **Settings → Pages**, select **GitHub Actions** as the
    build and deployment source.
-4. Wait for the **Deploy to GitHub Pages** workflow to complete, then replace
-   the live website placeholder at the top of this README.
+4. Wait for the **Deploy to GitHub Pages** workflow to complete and verify
+   `https://norsenode.dev/` is configured under **Settings → Pages** and points
+   to this deployment.
 
 For a new local Git repository, replace the placeholders below with your
 repository details. These commands create a commit and publish it; review the
