@@ -1,6 +1,6 @@
 # Norse Node
 
-**Live website:** `https://<OWNER>.github.io/<REPOSITORY>/` (replace this placeholder after deployment)
+**Live website:** https://cia-marwan.github.io/NorseNode/
 
 Norse Node is an independent student hackathon project and campus study-space
 demonstration. Browse building and floor information, and try temporary study
