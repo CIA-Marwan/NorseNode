@@ -129,6 +129,18 @@ To make building discovery more intuitive, Norse Node includes a category-based 
 
 🎯 Personalized Discovery — Students can narrow their options according to the type of location they wish to explore.
 
+### Why We Introduced This Feature?
+
+Having spent several years on campus, I became familiar with which buildings students commonly gravitate toward for studying, collaboration, and academic activities.
+
+Rather than presenting every building without additional context, I wanted to incorporate that firsthand knowledge into the application.
+
+These classifications represent experience-based observations, not official NKU usage statistics or measured occupancy data.
+
+By incorporating practical campus familiarity into the discovery process, Norse Node aims to make the platform more useful for students who may be unfamiliar with different study locations.
+
+**🎯 Our Goal: Turn firsthand campus knowledge into a more convenient and intuitive building discovery experience.**
+
 
 ## Demo profile
 
