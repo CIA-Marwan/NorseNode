@@ -141,21 +141,72 @@ By incorporating practical campus familiarity into the discovery process, Norse 
 
 **🎯 Our Goal: Turn firsthand campus knowledge into a more convenient and intuitive building discovery experience.**
 
+# 04 | Floor-Level Study Discovery & Study Servers
+<img width="1032" height="847" alt="Screenshot 2026-11-12 at 11 09 51 AM" src="https://github.com/user-attachments/assets/ecc70423-7c8b-436e-9ed1-82c6ba93e2b4" />
 
-## Demo profile
 
-Selecting **Explore Norse Node** initializes the fictional John Doe demo profile
-in the current browser session and opens the building directory. No sign-in or
-Alias is required.
+### 📍 Explore Your Floor. Find Your Space. Connect With Others.
 
-## Technologies
+Norse Node allows students to explore individual floors within NKU buildings, discover available study amenities, and participate in virtual study-server simulations.
 
-- HTML, CSS, and vanilla JavaScript.
-- Browser `sessionStorage` for isolated public demo state.
-- Python standard-library HTTP server and SQLite for optional local development.
-- GitHub Actions and GitHub Pages for static deployment.
+**✨ Key Features:**
 
-No frontend package manager or external runtime dependency is required.
+- 🏢 **Floor Information** — Explore individual floors within selected NKU buildings.
+- 🔌 **Study Amenities** — View listed resources such as charging ports, whiteboards, monitors, projectors, and vending machines.
+- 👥 **Server Capacity** — View participant limits and simulated server occupancy.
+- ➕ **Create Study Servers** — Start a virtual study session on a selected floor.
+- 🔎 **Search & Join Servers** — Discover and participate in available study sessions.
+- 💬 **Study Chat** — Communicate within simulated study servers.
+
+**🎯 Our Goal:** Bring campus study-space discovery and student networking together, making it easier for NKU students to find their ideal study environment and connect with fellow Norse.
+
+*📌 Note: The public version uses browser-based demo servers, and floor amenity information is illustrative.*
+
+# 🚀 Future Improvements & Roadmap
+
+While Norse Node was originally developed to help NKU students discover study locations and connect with their peers, our long-term vision extends far beyond academic collaboration.
+
+We envision transforming Norse Node into a versatile campus networking platform that brings students together through shared interests, activities, and experiences.
+
+### 🔮 Planned Features
+
+🛡️ Admin Accounts & Moderation — Introduce secure administrator accounts to manage users, oversee servers, moderate conversations, and maintain a safe community.
+
+🏫 Multi-University Support — Expand Norse Node beyond Northern Kentucky University, allowing students from other colleges and universities to create their own campus communities.
+
+🎮 Gaming Communities — Enable students to create gaming servers, find teammates, organize gaming sessions, and connect through shared interests.
+
+🤝 Group Meetups & Social Events — Allow students to organize campus meetups, student activities, club gatherings, and networking events.
+
+🔐 Verified Student Accounts — Introduce university-based authentication to provide personalized student profiles and secure access to campus communities.
+
+🌍 Real-Time Networking — Develop a shared backend supporting live messaging, persistent servers, and communication between students across devices.
+
+### 🎯 Our Long-Term Vision
+
+Transform Norse Node from a campus study discovery tool into a connected university community platform.
+
+We believe meaningful connections should extend beyond classrooms and study sessions. Whether students are collaborating on assignments, gaming together, attending events, or meeting new people, Norse Node aims to provide a digital space where those connections can begin.
+
+# Technologies Behind Norse Node
+
+### 1. 💻 Frontend Development
+
+🌐 HTML5 — Webpage structure, building information, and content organization.
+
+🎨 CSS3 — Responsive layouts, visual styling, and NKU-inspired branding.
+
+⚡ JavaScript — Search functionality, category filtering, login interactions, navigation, and study-server controls.
+
+### 2.Development & Deployment
+
+🐍 Python — Optional local development API.
+
+🗄️ SQLite — Database storage for the optional local study-server backend.
+
+🐙 GitHub — Source code management and project collaboration.
+
+🚀 GitHub Pages — Hosting and deployment of the public static demonstration.
 
 ## Local development
 
