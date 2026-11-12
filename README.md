@@ -10,7 +10,7 @@ Norse Node is a campus-focused study discovery and student networking web applic
 
 Built collaboratively using HTML, CSS, JavaScript, and Python. Norse Node was designed to simplify how students discover study locations, explore campus buildings, and connect with fellow Norse.
 
-Whether you're searching for a quiet corner to concentrate 📚, a collaborative environment to tackle assignments 🤝, or a place to connect with students who share your academic interests 💡, Norse Node brings the experience together in one accessible platform.
+Whether you're searching for a quiet corner to concentrate, a collaborative environment to tackle assignments, or a place to connect with students who share your academic interests, Norse Node brings the experience together in one accessible platform.
 
 # Our mission is simple:
 
