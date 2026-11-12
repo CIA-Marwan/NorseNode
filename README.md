@@ -208,39 +208,35 @@ We believe meaningful connections should extend beyond classrooms and study sess
 
 🚀 GitHub Pages — Hosting and deployment of the public static demonstration.
 
-## Local development
+# System Architecture & Technical Implementation
 
-### Try the isolated static demo
+Norse Node uses a static frontend architecture with an optional local backend for development and testing.
 
-From the project root, build the Pages-ready static files and serve them:
+### Application Architecture
+<img width="538" height="494" alt="Screenshot 2026-11-12 at 1 05 32 PM" src="https://github.com/user-attachments/assets/e246f58c-0a40-462a-89ed-9e448caaa518" />
 
-```sh
-python3 scripts/build_pages.py
-cd _site
-python3 -m http.server 8001
-```
 
-Open `http://localhost:8001/?demo=1` and select **Explore Norse Node** to use
-the browser-only demo. Demo data is private to the current tab and is not
-written to the SQLite database.
 
-### Run the optional local API
+**1.Client-Side Interactivity**
 
-The local API is for development only. In a separate terminal, run:
+Implemented JavaScript-driven building search, category filtering, navigation, and study-server controls.
 
-```sh
-python3 Main_Files/Study_Server.py
-```
+**2.Browser Session Management**
 
-It binds to `127.0.0.1:8000` by default and stores local data in
-`Main_Files/norse_node.sqlite3`, which is excluded from Git and Pages builds.
-When using the local API, serve the frontend from `http://localhost:8001/` as
-above. Do not expose this unauthenticated development API to a public network.
+The public demonstration uses sessionStorage to manage temporary study-server data and simulated chat messages within individual browser tabs.
 
-The optional `NORSE_NODE_HOST`, `NORSE_NODE_PORT`, and `NORSE_NODE_DB`
-environment variables override the local API's bind address, port, and database
-path. Keep the API bound to loopback; these settings are not used by GitHub
-Pages.
+**3.Python Backend Development**
+
+An optional Python standard-library HTTP server provides API functionality for local development, with SQLite supporting persistent local storage.
+
+**4.Deployment Isolation**
+
+The public GitHub Pages build excludes the Python backend, SQLite database, and local configuration files, keeping development-only components separate from the deployed frontend.
+
+**5.Automated Deployment**
+
+GitHub Actions builds and publishes the static application to GitHub Pages, with a custom domain configured for public access.
+
 
 ## GitHub Pages deployment
 
@@ -259,28 +255,9 @@ Relative links are retained so the site works under a repository subpath.
    `https://norsenode.dev/` is configured under **Settings → Pages** and points
    to this deployment.
 
-For a new local Git repository, replace the placeholders below with your
-repository details. These commands create a commit and publish it; review the
-files and obtain any required approval before running them.
-
-```sh
-git init -b main
-git add .
-git commit -m "Prepare Norse Node for GitHub Pages"
-git remote add origin https://github.com/<OWNER>/<REPOSITORY>.git
-git push -u origin main
-```
-
 GitHub Pages hosts a static site only. It cannot run `Study_Server.py`, SQLite,
 or shared real-time sessions; the public study-server experience is therefore a
 browser-only simulation.
-
-## Images and screenshots
-
-No project screenshots are currently included. Building and background images
-already referenced by the site are loaded from their existing external hosts;
-those hosts must remain reachable for the images to display. The image assets
-are third-party materials and are not claimed as Norse Node source code.
 
 ## Copyright and licensing
 
