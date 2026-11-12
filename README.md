@@ -1,13 +1,48 @@
-# Norse Node
+# Norse Node Live Website 
 
-**Live website:** https://norsenode.dev/
+**Live Website Link :** https://norsenode.dev/
 
-Norse Node is an independent student hackathon project and campus study-space
-demonstration. Browse building and floor information, and try temporary study
-servers. It is not an official NKU service.
+# 🚀 Introducing Norse Node
 
-The public demo does not ask for an account, personal information, or university
-credentials.
+One campus. Countless study spaces. Endless opportunities to connect.
+
+Norse Node is a campus-focused study discovery and student networking web application developed during a hackathon at Northern Kentucky University (NKU).
+
+Built collaboratively using HTML, CSS, JavaScript, and Python. Norse Node was designed to simplify how students discover study locations, explore campus buildings, and connect with fellow Norse.
+
+Whether you're searching for a quiet corner to concentrate 📚, a collaborative environment to tackle assignments 🤝, or a place to connect with students who share your academic interests 💡, Norse Node brings the experience together in one accessible platform.
+
+# Our mission is simple:
+
+🎯 Make studying more accessible, campus navigation more convenient, and student connections more meaningful.
+
+At Norse Node, our mission is to transform the way Northern Kentucky University students discover study spaces, connect with their peers, and collaborate across campus.
+
+We believe that a university is more than a collection of classrooms and buildings. It is a network of individuals, ideas, and opportunities waiting to be connected.
+
+Inspired by the concept of a node in computer networking, we envision every student as an essential part of a larger academic community. By bringing campus discovery and student networking together in one accessible platform, we aim to make finding the right study environment easier, encourage meaningful academic connections, and create new opportunities for collaboration.
+
+ # 💡 The Meaning Behind Norse Node : 
+ 
+🔗 In our Perception Every Student Is a Node. Together, We Form a Network.
+
+The name Norse Node combines two ideas that define the project's identity:
+
+**⚔️ NORSE — Our University Identity** 
+
+Inspired by NKU's Norse identity, representing the students, community, and university that brought this project to life.
+
+**🌐 NODE — The Power of Connection**
+
+In computer networking, a node represents a device or point connected to a larger network, capable of communicating and exchanging information.
+
+We applied this concept to the student experience within Norse Node.
+
+Imagine every NKU student as an individual node. When students discover shared study locations, join study groups, and communicate with their peers, they begin forming a connected academic network.
+
+**🔗 Individual Students → Shared Spaces → Meaningful Connections → Stronger Community**
+
+Norse Node is more than a building directory. It's a concept built around connecting students through the places where they learn.
 
 ## Features
 
