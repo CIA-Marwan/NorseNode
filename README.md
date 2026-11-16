@@ -111,8 +111,6 @@ Our Goal: Reduce the time students spend searching for locations and help them f
 # 03 | Building Categories & Study Popularity
 <img width="1023" height="731" alt="Screenshot 2026-11-12 at 10 21 22 AM" src="https://github.com/user-attachments/assets/1fe99024-7aa1-48a0-a149-f8f95a893450" />
 
-** Discover Study Locations Through Campus Experience**
-
 Not every campus building serves the same purpose.
 
 Some buildings naturally attract larger groups of students, while others provide quieter environments that may be better suited for focused academic work.
