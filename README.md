@@ -92,13 +92,13 @@ Norse Node simplifies the discovery process through a centralized directory of N
 
 Instead of searching across multiple sources or exploring campus without a clear destination, students can begin by browsing available buildings directly within the application.
 
-### Smart Building Search
+### Smart Building Search Makes It Efficient 
 
 Know where you want to study? Find it in seconds.
 
 Norse Node includes an interactive building search feature that allows students to locate campus buildings by name.
 
-Search by Building Name — Quickly find specific NKU locations.
+Search by Building Name — Quickly find specific NKU locations and choose it as your study location within seconds.
 
 Dynamic Search Results — JavaScript filters the displayed buildings as users search.
 
