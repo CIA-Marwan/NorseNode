@@ -8,7 +8,7 @@ One campus. Countless study spaces. Endless opportunities to connect.
 
 Norse Node is a campus-focused study discovery and student networking web application developed during a hackathon at Northern Kentucky University (NKU).
 
-Built collaboratively using HTML, CSS, JavaScript, and Python. Norse Node was designed to simplify how students discover study locations, explore campus buildings, and connect with fellow Norse.
+Built collaboratively using HTML, CSS, JavaScript, and Python. Norse Node was designed to simplify how students discover study locations, explore campus buildings, and connect with fellow NKU Students within the same Program / Area of Study as them or if they also simply want to make new friends as well and make connections.
 
 Whether you're searching for a quiet corner to concentrate, a collaborative environment to tackle assignments, or a place to connect with students who share your academic interests, Norse Node brings the experience together in one accessible platform.
 
