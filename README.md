@@ -69,7 +69,7 @@ Every great campus experience begins with a simple first step.
 
 Norse Node introduces students to the platform through a dedicated login interface designed to be straightforward, welcoming, and easy to navigate.
 
-### ✨ Key Highlights
+### Key Highlights
 
 🎨 NKU-Inspired Design — A sleek black-and-gold interface reflecting the university's visual identity.
 
@@ -98,15 +98,15 @@ Know where you want to study? Find it in seconds.
 
 Norse Node includes an interactive building search feature that allows students to locate campus buildings by name.
 
-🔍 Search by Building Name — Quickly find specific NKU locations.
+Search by Building Name — Quickly find specific NKU locations.
 
-⚡ Dynamic Search Results — JavaScript filters the displayed buildings as users search.
+Dynamic Search Results — JavaScript filters the displayed buildings as users search.
 
-🏫 Centralized Directory — Explore multiple campus buildings from one interface.
+Centralized Directory — Explore multiple campus buildings from one interface.
 
-🖱️ Direct Building Selection — Select a building to access its dedicated information page.
+Direct Building Selection — Select a building to access its dedicated information page.
 
-🎯 Our Goal: Reduce the time students spend searching for locations and help them focus on what matters most: studying.
+Our Goal: Reduce the time students spend searching for locations and help them focus on what matters most: studying.
 
 # 03 | Building Categories & Study Popularity
 <img width="1023" height="731" alt="Screenshot 2026-11-12 at 10 21 22 AM" src="https://github.com/user-attachments/assets/1fe99024-7aa1-48a0-a149-f8f95a893450" />
@@ -127,7 +127,7 @@ To make building discovery more intuitive, Norse Node includes a category-based 
 
 🏛️ Campus Familiarity — Categories were informed by approximately three years of firsthand experience attending NKU.
 
-🎯 Personalized Discovery — Students can narrow their options according to the type of location they wish to explore.
+Personalized Discovery — Students can narrow their options according to the type of location they wish to explore.
 
 ### Why We Introduced This Feature?
 
